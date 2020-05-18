@@ -12,7 +12,7 @@ abstract class Subject {
     /**
      * @var array
      */
-    private $observers = [];
+    protected $observers = [];
 
     public function addObserver(Observer $observer) {
         $this->observers[get_class($observer)] = $observer;
@@ -21,6 +21,4 @@ abstract class Subject {
     public function removeObserver(Observer $observer) {
         unset($this->observers[get_class($observer)]);
     }
-
-
 }

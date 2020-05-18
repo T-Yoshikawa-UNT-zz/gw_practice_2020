@@ -3,7 +3,8 @@ namespace App\Data;
 
 use App\Data\Subject;
 use App\Display\Observer;
-use SplFileObject;
+use App\Config\JmaConnectConfig;
+use App\File\CsvFile;
 
 /**
  * Description of PrecipitationData
@@ -11,16 +12,14 @@ use SplFileObject;
  * @author t-yoshikawa
  */
 class PrecipitationData extends Subject {
+    
+    public $data = [];
 
-
-    public function getLatestData($url) {
-        $data = file_get_contents($url);
-        // SJISをUTF8に変換
-        $data = mb_convert_encoding($data, 'UTF-8', 'SJIS-win');
-
-
-
-
+    public function getLatestAllData($url) {
+        $file = new CsvFile($url);
+        $this->data = $file->getRecords();
+        foreach ($this->observers as $observer) {
+            $observer->update($this);
+        }
     }
-
 }
