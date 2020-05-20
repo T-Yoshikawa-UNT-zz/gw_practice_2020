@@ -33,9 +33,9 @@ class CsvFile {
         // CSVファイルの読み込み
         $this->fileObject = new SplFileObject($meta['uri'], 'rb');
         $this->fileObject->setFlags(SplFileObject::READ_CSV);
-        $this->fileObject->setCsvControl(',',"\"","");
+        $this->fileObject->setCsvControl(',',"\"","\\");
     }
-    
+
     public function getAll() {
         $records = [];
         foreach ($this->fileObject as $line) {
