@@ -7,8 +7,7 @@ use App\Display\Observer;
  * Description of Subject
  *
  */
-abstract class SingletonSubject implements Observer
-{
+abstract class SingletonSubject {
 
     private static $subject;
 
