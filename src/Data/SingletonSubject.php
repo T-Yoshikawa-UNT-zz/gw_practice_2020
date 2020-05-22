@@ -2,18 +2,33 @@
 namespace App\Data;
 
 use App\Display\Observer;
+use App\Display\Observer;
 
 /**
  * Description of Subject
  *
  */
-abstract class Subject {
+abstract class SingletonSubject implements Observer
+{
 
+    private static $subject;
+    
     /**
      * @var array
      */
     protected $observers = [];
+    
+    private function __construct() {
+    }
+    
+    public static function getInstance() {
+        if (!isset(self::$subject)) {
+            self::$subject = new PrecipitationData();    
+        }
 
+        return self::$subject;
+    }
+    
     public function addObserver(Observer $observer) {
         $this->observers[get_class($observer)] = $observer;
     }

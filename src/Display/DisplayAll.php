@@ -8,7 +8,7 @@ use App\Data\PrecipitationData;
 /**
  * Description of AllDisplay
  */
-class DisplayMinimum implements Observer {
+class DisplayAll implements Observer {
 
     public function update($subject) {
         foreach ($subject->data as $record) {
