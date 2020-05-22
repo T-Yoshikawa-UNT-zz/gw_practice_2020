@@ -10,7 +10,7 @@ use App\Display\DisplayAll;
 use App\Display\DisplayMiyazaki;
 
 $data = PrecipitationData::getInstance();
-$data->addObserver(new DisplayMiyazaki());
+$data->addObserver(new DisplayAll());
 
 $data->getLatestAllData(JmaConnectConfig::PRECIPITATION_1_HOUR_LATEST);
 
